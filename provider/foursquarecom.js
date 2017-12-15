@@ -43,14 +43,14 @@ function strip_html_tags(str) {
 
 function testData(date) {
 	return{
-		webUrl: 'https://foursquare.com/v/bonanza-roastery/55eb124d498efde4131db55e',
-		name: 'The Smallest Hostel of Florence',
-		descriptionText: 'Das The Smallest Hostel of Florence begrüßt Sie in Florenz, nur 5 Gehminuten von der Basilika Santa Maria Novella entfernt.',
+		webUrl: 'https://foursquare.com/v/upper-burger-grill/56f31647498e5e450e4383fa',
+		name: 'Upper Burger Grill - Burger Joint in Charlottenburg',
+		descriptionText: 'Carefully prepared with love for gourmet! Just try – you see, no lie! Meet our Meat – don’t stop Eat! We use Dry Aged Beef and US Prime beef only',
 		category: { id: "food" },
 		created: date,
 		location:  {
-			latitude: 43.7753645,
-			longitude: 11.2545613,
+			latitude: 52.503295976364534,
+			longitude: 13.334470510821701,
 			exactLocation: true
 		}
     }
@@ -60,7 +60,7 @@ module.exports = {
 	supportedURLs: ["foursquare.com"],
 	extractor: Extractor,
 	testData: {
-		url: "https://foursquare.com/v/bonanza-roastery/55eb124d498efde4131db55e",
+		url: "https://foursquare.com/v/upper-burger-grill/56f31647498e5e450e4383fa",
 		expection: testData
 	}
 }
