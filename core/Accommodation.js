@@ -1,9 +1,11 @@
 class Accommodation {
-	constructor(url, title, description, location) {
-		this.url = url
+	constructor(webURL, title, description, location, type, created) {
+		this.webURL = webURL
 		this.title = title
 		this.description = description
 		this.location = location
+		this.type = type
+		this.created = created
 	}
 }
 

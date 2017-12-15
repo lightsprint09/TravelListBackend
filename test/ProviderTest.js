@@ -14,19 +14,14 @@ describe('Test all providers', () => {
 	let tests = providersFiles.map(function(providerFile) {
 		let providerModule = require("../provider/" + providerFile);
 		let provider = new providerModule.extractor()
-		let testData = providerModule.testData;
+		let testData = providerModule.testData
+		let date = new Date()
+		let promise = provider.extractFrom(testData.url, date)
 		
-		let promise = provider.extractFrom(testData.url)
-		
-		return expect(promise).to.eventually.have.deep.equal(testData.expection) 
+		return expect(promise).to.eventually.have.deep.equal(testData.expection(date)) 
 	})
 	
 	return Promise.all(tests)
-	/*
-    let testData
-    let provider = new Provider()
-    provider.extractFrom(testData.ur)
-    .then
-*/
+	
   }).timeout(500000);
 });
