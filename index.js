@@ -8,6 +8,7 @@ app.use(bodyParser.json());
 
 // respond with "hello world" when a GET request is made to the homepage
 app.post('/extractTrip', function (req, res) {
+	console.log(req.body)
 	let url = req.body.url
  	const provider = allProviders.providerFor(url)
 	const result = provider.extractFrom(url, req.body.created);
