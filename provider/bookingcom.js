@@ -16,7 +16,8 @@ class Extractor {
 			.data(function(jsonText) {
 				let json = JSON.parse(jsonText.data)
 				let location = parseLocationFrom(json.hasMap);
-				let images = jsonText.images.map(x => x.replace("max500","max1024x768"));
+				let images = [json.image];
+				images = images.map(x => x.replace("max500","max1024x768"));
 				let item = new Item(url, json.name, json.description, location, "accomodation", created, images);
 
 		    	resolve(item)
