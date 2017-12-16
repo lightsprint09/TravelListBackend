@@ -2,48 +2,50 @@ const osmosis = require('osmosis');
 const Location = require("./../core/Location")
 const Item = require("./../core/Item")
 const { URL, URLSearchParams } = require('url');
-const fetch = require('node-fetch');
-var WAE = require('web-auto-extractor').default
 
 class Extractor {
-
 	extractFrom(url, created) {
-		return fetch(url)
-		.then(function(res) {
-			return res.text()
-		})
-		.then(function(body) {
-			let metatags = WAE().parse(body).metatags
-			console.log(metatags)
-			let accommodation = new Accommodation(url, metatags.name, metatags.description, null, "accomodation", created);
-
-		})
-		.then(function(result) {
-			console.log(result)
-		})
-/*
 		return new Promise(function(resolve, reject) {
 			osmosis
 			.get(url)
-			.find('script[type="application/ld+json"]')
-			.set("data")
+			.set({
+				"title": "div[itemprop=name]",
+				"description": "#details span:first-child",
+				"images": ["meta[itemprop=image]@content"],
+				"bundleData": "script[data-hypernova-key=spaspabundlejs]"
+			})
 			.data(function(jsonText) {
-				let json = JSON.parse(jsonText.data)
-				let location = parseLocationFrom(json.hasMap);
-				let accommodation = new Accommodation(url, json.name, json.description, location, "accomodation", created);
-
-		    	resolve(accommodation)
+				let bundleData = jsonText.bundleData.replace("<!--","").replace("-->", "");
+				let jsonData = JSON.parse(bundleData);
+				let location = "";
+				console.log(isEmptyObject(jsonData.bootstrapData.reduxData));
+				if (!isEmptyObject(jsonData.bootstrapData.reduxData)) {
+					let latitude = jsonData.bootstrapData.reduxData.marketplacePdp.listingInfo.listing.lat;
+					let longitude = jsonData.bootstrapData.reduxData.marketplacePdp.listingInfo.listing.lng;
+					location = new Location(latitude, longitude, false)
+				}
+				let description = strip_html_tags(jsonText.description);
+				let item = new Item(url, jsonText.title, description, location, "accomodation", created, jsonText.images);
+		    	resolve(item)
 			})
 		})
-*/
-
 	}
 }
+function isEmptyObject(obj) {
+    var name;
+    for (name in obj) {
+        if (obj.hasOwnProperty(name)) {
+            return false;
+        }
+    }
+    return true;
+}
 
-function parseLocationFrom(url) {
-	const myURL = new URL(url);
-	let coordinates = myURL.searchParams.get('center').split(",")
-	return new Location(coordinates[0] * 1, coordinates[1] * 1, false);
+function strip_html_tags(str) {
+	if(str == null) {
+		return "";
+	}
+  	return str.replace(/<[^>]*>/g, '');
 }
 
 function testData(date) {
