@@ -16,7 +16,6 @@ class Extractor {
 				"images": [".photoWithContent img@src"]
 			})
 			.data(function(jsonText) {
-				console.log(jsonText);
 				let images = jsonText.images.map(x => x.replace("200x200","1000x1000"));
 				let location = parseLocationFrom(jsonText.googleMapLink);
 				let description = strip_html_tags(jsonText.description);

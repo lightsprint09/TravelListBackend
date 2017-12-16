@@ -1,5 +1,5 @@
 class Item {
-	constructor(webUrl, name, descriptionText, location, category, created, images) {
+	constructor(webUrl, name, descriptionText, location, category, created, images, startDate) {
 		this.webUrl = webUrl
 		this.name = name
 		this.descriptionText = descriptionText
@@ -7,6 +7,9 @@ class Item {
 		this.category = { id: category }
 		this.created = created
 		this.images = images
+		if(startDate != null){
+			this.startDate = startDate
+		}
 	}
 }
 

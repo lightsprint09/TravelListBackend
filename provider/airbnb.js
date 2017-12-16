@@ -18,7 +18,6 @@ class Extractor {
 				let bundleData = jsonText.bundleData.replace("<!--","").replace("-->", "");
 				let jsonData = JSON.parse(bundleData);
 				let location = "";
-				console.log(isEmptyObject(jsonData.bootstrapData.reduxData));
 				if (!isEmptyObject(jsonData.bootstrapData.reduxData)) {
 					let latitude = jsonData.bootstrapData.reduxData.marketplacePdp.listingInfo.listing.lat;
 					let longitude = jsonData.bootstrapData.reduxData.marketplacePdp.listingInfo.listing.lng;
