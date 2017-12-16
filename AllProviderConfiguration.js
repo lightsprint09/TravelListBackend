@@ -20,7 +20,11 @@ function allSupportedWebsites() {
 function providerFor(urlString) {
 	const url = new URL(urlString);
 	let file = allSupportedWebsites()[url.host.replace("www.", "")];
-	const Extractor = require(file).extractor;
+	const module = require(file)
+	if (!module) {
+		return
+	}
+	const Extractor = module.extractor
 	return new Extractor()
 }
 
