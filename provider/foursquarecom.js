@@ -48,11 +48,28 @@ function testData(date) {
 		descriptionText: 'Carefully prepared with love for gourmet! Just try – you see, no lie! Meet our Meat – don’t stop Eat! We use Dry Aged Beef and US Prime beef only',
 		category: { id: "food" },
 		created: date,
-		location:  {
-			latitude: 52.503295976364534,
-			longitude: 13.334470510821701,
-			exactLocation: true
-		}
+		"location": {
+	        "latitude": 52.503295976364534,
+	        "longitude": 13.334470510821701,
+	        "exactLocation": true
+	    },
+		images: [
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_83mVj9-KY5__pdEcmrg78go5FQfb_K3VR_cJWvySCR0.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_QXD9-FCHGhi-A4g69yQZEvl-7JF6VZYV6Ns-JPtPzsM.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_JiaQ5z-k_sSJELer0yUJIC02FFqy5Ik1rZwRNMGOWlg.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_UTDNFk0073SLEyVQ0Fh1gW4_w1f-WqzHqVC0oyYvwhs.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_9IdwcvQ_Rhsw8hoolulfQEQv-8OLjqsSesB5bRam8Zw.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_LAxbXUg-EQooITeXUFoZaqmi5OuIoQMCQgxd1oquho8.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_5dq8m9wT7Gc-Y0QIyh8jPN1hx5s52HQWFLiV3LNK6P0.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_gIKVPHjJkQE8hp1JW8HJPqu4yDo87cWCiNc1xFmsvVY.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_CuG7m9tNwBKEVhDaOA6QRa_wjcGn3a4DZrqK2fMAXp8.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_CMijtH7LIgGv760cE68nb7EZtd-pcBdplRmWfdu-WlM.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170678006_JRJfGai1TlYIFCC8h6uUTdsaYv6EhrdXqDceC1ZC4OA.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_rG5u7AADYNbp9sZbRH6ROS9T74ENHxcbHR7iEWvSsjE.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_gfmKJ3H7B5u_KhS6KSi0eRSh_ExA27vgzhUPySf91b8.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/93567__-tSgFDwddi2ifc-Adnn1Z2_t8Lbg75xaDSeHBzsolg.jpg",
+	        "https://igx.4sqi.net/img/general/1000x1000/170675224_UfGJ_nJ3cpMbrSD7cIwyVN3HeuDhTNhSUU7p5EAklzA.jpg"
+	    ]
     }
 }
 

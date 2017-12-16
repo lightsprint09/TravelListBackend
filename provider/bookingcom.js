@@ -35,16 +35,21 @@ function parseLocationFrom(url) {
 
 function testData(date) {
 	return{
-		webUrl: 'https://www.booking.com/hotel/it/the-smallest-hostel-of-florence.de.html',
-		name: 'The Smallest Hostel of Florence',
-		descriptionText: 'Das The Smallest Hostel of Florence begrüßt Sie in Florenz, nur 5 Gehminuten von der Basilika Santa Maria Novella entfernt.',
-		category: { id: "accomodation" },
-		created: date,
-		location:  {
-			latitude: 43.7753645,
-			longitude: 11.2545613,
-			exactLocation: true
-		}
+		"webUrl": "https://www.booking.com/hotel/it/the-smallest-hostel-of-florence.de.html",
+	    "name": "The Smallest Hostel of Florence",
+	    "descriptionText": "Das The Smallest Hostel of Florence begrüßt Sie in Florenz, nur 5 Gehminuten von der Basilika Santa Maria Novella entfernt.",
+		"location": {
+	        "latitude": 43.7753645,
+	        "longitude": 11.2545613,
+	        "exactLocation": true
+	    },
+	    "category": {
+	        "id": "accomodation"
+	    },
+	    "created": date,
+	    "images": [
+	        "https://t-ec.bstatic.com/images/hotel/max1024x768/621/62172447.jpg"
+	    ]
     }
 }
 

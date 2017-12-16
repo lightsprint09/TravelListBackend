@@ -50,16 +50,19 @@ function strip_html_tags(str) {
 
 function testData(date) {
 	return{
-		webUrl: 'https://www.booking.com/hotel/it/the-smallest-hostel-of-florence.de.html',
-		name: 'The Smallest Hostel of Florence',
-		descriptionText: 'Das The Smallest Hostel of Florence begrüßt Sie in Florenz, nur 5 Gehminuten von der Basilika Santa Maria Novella entfernt.',
+		webUrl: 'https://www.airbnb.de/rooms/10201545',
+		name: 'Sonnige Wohnung in U-Bahn Nähe (Top 2)',
+		descriptionText: 'Ich vermiete eine sonnige und helle Wohnung 7 Minuten von der U4 U-Bahn Station Ober-St. Veit entfernt. Die Wohnung besteht aus einem großen Wohnraum mit Küchenecke, einem Schlafzimmer und einem großen Badezimmer mit Badewanne. Terrasse im Sommer!',
 		category: { id: "accomodation" },
 		created: date,
-		location:  {
-			latitude: 43.7753645,
-			longitude: 11.2545613,
-			exactLocation: true
-		}
+		"location": {
+	        "latitude": 48.19068913206624,
+	        "longitude": 16.267037876014815,
+	        "exactLocation": false
+	    },
+		"images": [
+	        "https://a0.muscache.com/im/pictures/09fbbef3-7872-4747-a1b9-257eb07ad1d9.jpg?aki_policy=large"
+	    ]
     }
 }
 
