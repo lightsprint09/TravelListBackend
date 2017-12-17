@@ -20,12 +20,12 @@ class Extractor {
 				let image = jsonText.image;
 				let startDate = json.startDate;
 				let fullAddress = "";
-				if(json.location != null) {
+				if(json.location) {
 					fullAddress = [json.location.address.streetAddress, json.location.address.addressLocality, json.location.address.postalCode].join(",");
 				}
-				let item = new Item(json.url, json.name, jsonText.description, "", "event", created, [image], startDate);
+				let item = new Item(json.url, json.name, jsonText.description, null, "event", created, [image], startDate);
 		    	geocodeFrom(fullAddress, function(location) {
-					if(location != null) {
+					if(location) {
 						item.location = location;
 					}
 					resolve(item)
@@ -64,18 +64,18 @@ function strip_html_tags(str) {
 }
 
 function testData(date) {
-	return{
+	return {
 		webUrl: 'http://www.eventim.de/luke-mockridge-lucky-man-offenburg-Tickets.html?affiliate=GMD&doc=artistPages%2Ftickets&fun=artist&action=tickets&key=1427190%249500686&jumpIn=yTix&kuid=472131',
 		"name": "Luke Mockridge: Lucky Man",
 	    "descriptionText": "Lukes Generation hat ein Problem. Die Welt steht ihr offen. Offen, wie ein prall gefüllter Supermarkt. Aber wie soll man sich entscheiden, in diesem Dschungel der Möglichkeiten? Was passiert nach der Schule? Praktikum, Ausbildung, Studium, Backpacking in Australien oder Surfen in Indonesien? Das Ganze muss ja schließlich auch bei Facebook, Instagram, Snapchat und Co festgehalten werden. Wer soll das denn alles schaffen? Und bleibt die Liebe dabei nicht auf der Strecke? In seinem brandneuen Live-Programm „Lucky Man“ nimmt uns Entertainer Luke Mockridge mit in die Welt der Selbstfindung. Charmant, reflektiert, scharf beobachtet, aber gewohnt optimistisch, erfasst er aktuelle Themen mit großer Neugier. Vom Einzug in die erste eigene Bude, über WG-Partys, bis hin zum großen Liebeskummer und der Selbstdarstellung im Netz – Luke nimmt sie alle mit und spricht seiner Generation dabei wie immer aus der Seele.",
 	    "category": {
 	        "id": "event"
 	    },
-	    "created": "2017-12-15T23:20:00Z",
+	    "created": date,
 	    "images": [
 	        "http://www.eventim.de/obj/media/DE-eventim/teaser/222x222/2016/luke-mockridge-tickets-092016.jpg"
 	    ],
-	    "startDate": date,
+	    "startDate": "2018-01-18T20:00:00.000+01:00",
 	    "location": {
 	        "latitude": 48.4621088,
 	        "longitude": 7.9349789,

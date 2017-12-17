@@ -7,7 +7,7 @@ class Item {
 		this.category = { id: category }
 		this.created = created
 		this.images = images
-		if(startDate != null){
+		if(startDate != null) {
 			this.startDate = startDate
 		}
 	}

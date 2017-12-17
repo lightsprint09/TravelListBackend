@@ -17,7 +17,7 @@ class Extractor {
 				"images": ".originalImage@src"
 			})
 			.data(function(jsonText) {
-				let location = new Location(jsonText.lat, jsonText.lng, true);
+				let location = new Location(jsonText.lat * 1, jsonText.lng * 1, true);
 				let item = new Item(url, jsonText.title, jsonText.description, location, "accomodation", created, [jsonText.images]);
 		    	resolve(item)
 			})
@@ -33,8 +33,8 @@ function testData(date) {
 	    "name": "Hofgut Hafnerleiten",
 	    "descriptionText": "Das Hofgut Hafnerleiten ist der wertvollste Rückzugsort  in der Thermen- und Golfregion Bad Birnbach in der Niederbayrischen Hügellandschaft. Für Paare, Nat",
 	    "location": {
-	        "latitude": "48.48773",
-	        "longitude": "13.10405000000003",
+	        "latitude": 48.48773,
+	        "longitude": 13.10405000000003,
 	        "exactLocation": true
 	    },
 	    "category": {
