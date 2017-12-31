@@ -12,11 +12,14 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "html-metadata": "^1.6.3",
     "install": "^0.10.2",
     "node-fetch": "^1.7.3",
     "node-geocoder": "^3.21.1",
     "npm": "^5.6.0",
     "osmosis": "^1.1.5",
+    "query-json": "^2.0.1",
+    "safe-access": "^0.1.0",
     "web-auto-extractor": "^1.0.17"
   },
   "devDependencies": {

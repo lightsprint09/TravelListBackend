@@ -1,6 +1,7 @@
 const express = require('express');
 var bodyParser = require('body-parser')
 const allProviders = require("./AllProviderConfiguration");
+const FallbackExtractor = require("./provider/fallbackParser.js").extractor;
 
 var app = express()
 app.use(bodyParser.json());
@@ -10,7 +11,7 @@ app.use(bodyParser.json());
 app.post('/extractTrip', function (req, res) {
 	console.log(req.body)
 	let url = req.body.url
- 	const provider = allProviders.providerFor(url)
+ 	const provider = allProviders.providerFor(url) || new FallbackExtractor();
 	const result = provider.extractFrom(url, req.body.created);
 	result.then(function(payload) {
 	 	res.send(payload)

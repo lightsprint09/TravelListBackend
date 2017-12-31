@@ -13,4 +13,12 @@ class Item {
 	}
 }
 
+class URL {
+	constructor(original, canocinal, affilate) {
+		this.original = original;
+		this.canocinal = canocinal;
+		this.affilate = affilate;
+	}
+}
+
 module.exports = Item
