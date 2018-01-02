@@ -40,9 +40,10 @@ function extractLocationFromMetaTags(metatags) {
 function extractLocation(key, parsed) {
 	const regex = new RegExp(key, 'i');
 	const result = queryJson.search(parsed, regex, {details: true });
-	if (result.length == 0) {
+	if (!result[0]) {
 		return null
 	}
+	
 	var keyPathResult = getValueForKeyPath(result[0].path, parsed)
 	if (keyPathResult[0]) {
 		return keyPathResult[0]
@@ -61,7 +62,7 @@ function getValueForKeyPath(keyPath, inObject) {
 function extractLocationFromHasMap(jsonld) {
 	const regex = new RegExp("hasMap", 'i');
 	const result = queryJson.search(jsonld, regex, { details: true });
-	if (!result.length) {
+	if (!result[0]) {
 		return null
 	}
 	var url = getValueForKeyPath(result[0].path, jsonld)

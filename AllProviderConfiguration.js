@@ -2,6 +2,7 @@ const fs = require("fs");
 const { URL, URLSearchParams } = require('url');
 const normalizedPath = require("path").join(__dirname, "/provider");
 const providersFiles = fs.readdirSync(normalizedPath).filter(function(file) { return file.indexOf("js") !== -1 })
+const FallbackExtractor = require("./provider/fallbackParser.js").extractor;
 
 
 function allSupportedWebsites() {
@@ -20,10 +21,10 @@ function allSupportedWebsites() {
 function providerFor(urlString) {
 	const url = new URL(urlString);
 	let file = allSupportedWebsites()[url.host.replace("www.", "")];
-	const module = require(file)
-	if (!module) {
-		return
+	if (!file) {
+		return new FallbackExtractor();
 	}
+	const module = require(file)
 	const Extractor = module.extractor
 	return new Extractor()
 }
