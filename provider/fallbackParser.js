@@ -29,8 +29,8 @@ class Extractor {
 }
 
 function extractLocationFromMetaTags(metatags) {
-	let longitude = extractLocation('LONGITUDE', metatags)
-	let latitude = extractLocation('LATITUDE', metatags)
+	let longitude = extractLocation('LONGITUDE', metatags) * 1
+	let latitude = extractLocation('LATITUDE', metatags) * 1
 	if (longitude && longitude) {
 		return { longitude, latitude }
 	}
