@@ -15,18 +15,22 @@ class Extractor {
 			return res.text()
 		}).then(function(text) {
 			const parsed      = WAE().parse(text)
-			const title       = parsed.metatags["og:title"][0]
-			const description = parsed.metatags["og:description"][0] || parsed.metatags.description
+			const title       = access(parsed, "metatags.og:title.[0]")
+			const description = access(parsed, "metatags.og:description.[0]") || access(parsed, "metatags.description")
 			const coordinates    = extractLocationFromMetaTags(parsed.metatags) || extractLocationFromHasMap(parsed.jsonld)
-			const location = new Location(coordinates.latitude, coordinates.longitude, true)
+			var location
+			if (coordinates) {
+				location = new Location(coordinates.latitude, coordinates.longitude, true)
+			}
 			const images = parsed.metatags["og:image"] || []
-			const type = "accomodation"
+			const type = title ? "accomodation" : "unknown"
 			const item = new Item(url, title, description, location, type, created, images);
-			
+			console.log(JSON.stringify(parsed, null, 2), text)
 			return item
 		})
 	}
 }
+
 
 function extractLocationFromMetaTags(metatags) {
 	let longitude = extractLocation('LONGITUDE', metatags) * 1
@@ -40,7 +44,7 @@ function extractLocationFromMetaTags(metatags) {
 function extractLocation(key, parsed) {
 	const regex = new RegExp(key, 'i');
 	const result = queryJson.search(parsed, regex, {details: true });
-	if (!result[0]) {
+	if (!result || !result[0]) {
 		return null
 	}
 	
@@ -62,7 +66,7 @@ function getValueForKeyPath(keyPath, inObject) {
 function extractLocationFromHasMap(jsonld) {
 	const regex = new RegExp("hasMap", 'i');
 	const result = queryJson.search(jsonld, regex, { details: true });
-	if (!result[0]) {
+	if (!result || !result[0]) {
 		return null
 	}
 	var url = getValueForKeyPath(result[0].path, jsonld)
