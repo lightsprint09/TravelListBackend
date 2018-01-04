@@ -16,7 +16,7 @@ class Extractor {
 		}).then(function(text) {
 			const parsed      = WAE().parse(text)
 			const title       = access(parsed, "metatags.og:title[0]")
-			const description = access(parsed, "metatags.og:description[0]") || access(parsed, "metatags.description")
+			const description = access(parsed, "metatags.og:description[0]") || access(parsed, "metatags.description[0]")
 			const coordinates    = extractLocationFromMetaTags(parsed.metatags) || extractLocationFromHasMap(parsed.jsonld)
 			var location
 			if (coordinates) {
