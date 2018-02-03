@@ -17,18 +17,45 @@ class Extractor {
 			const parsed      = WAE().parse(text)
 			const title       = access(parsed, "metatags.og:title[0]")
 			const description = access(parsed, "metatags.og:description[0]") || access(parsed, "metatags.description[0]")
-			const coordinates    = extractLocationFromMetaTags(parsed.metatags) || extractLocationFromHasMap(parsed.jsonld)
+			const coordinates = extractLocationFromMetaTags(parsed.metatags) || extractLocationFromHasMap(parsed.jsonld)
 			var location
 			if (coordinates) {
 				location = new Location(coordinates.latitude, coordinates.longitude, true)
 			}
 			const images = parsed.metatags["og:image"] || []
-			const type = title ? "accomodation" : "unknown"
-			const item = new Item(url, title, description, location, type, created, images);
+			const item = new Item(url, title, description, location, null, created, images);
 			console.log(JSON.stringify(parsed, null, 2))
 			return item
 		})
 	}
+}
+
+function extractFoodType(metaData) {
+	let keywords = ["essen", "food", "eat"]
+	let matches = keyWordLookup(metaData, keywords)
+	
+	return matches ? "food" : null
+}
+
+function extractAccomodation(metaData) {
+	let keywords = ["hotel", "accomodation", "hostel"]
+	let matches = keyWordLookup(metaData, keywords)
+	
+	return matches ? "accomodation" : null
+}
+
+function keyWordLookup(metaData, keywords) {
+	let text = JSON.stringify(metaData)
+	
+	var length = keywords.length
+	var i;
+	for(i = 0; i < length; i++) {
+		let contains = text.indexOf(keywords[i])
+		if (contains != -1) {
+			return true
+		}
+	}
+	return false
 }
 
 
@@ -43,7 +70,7 @@ function extractLocationFromMetaTags(metatags) {
 
 function extractLocation(key, parsed) {
 	const regex = new RegExp(key, 'i');
-	const result = queryJson.search(parsed, regex, {details: true });
+	const result = queryJson.search(parsed, regex, { details: true });
 	if (!result || !result[0]) {
 		return null
 	}
